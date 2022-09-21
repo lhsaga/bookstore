@@ -4,10 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
+public interface CategoryRepository extends CrudRepository<Category,Long> {
 
-public interface BookRepository extends CrudRepository<Book,Long> {
-	
- List<Book> findByIsbn(String isbn);
-
+	List<Category> findByName(String name);
 }
-

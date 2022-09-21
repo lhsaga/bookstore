@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import bookstore.io.github.lhsaga.bookstore.model.Book;
 import bookstore.io.github.lhsaga.bookstore.model.BookRepository;
+import bookstore.io.github.lhsaga.bookstore.model.CategoryRepository;
 
 @Controller
 
@@ -15,6 +16,8 @@ public class BookController {
 
 	@Autowired
 	private BookRepository repository;
+	@Autowired
+	private CategoryRepository crepository;
 	
 	@RequestMapping(value= {"/","/bookList"})
 	public String bookList(Model model) {
@@ -25,6 +28,7 @@ public class BookController {
 	@RequestMapping(value = "/add")
 	public String addBook(Model model) {
 		model.addAttribute("book",new Book());
+		model.addAttribute("books", crepository.findAll());
 		return "addBook";
 	}
 	

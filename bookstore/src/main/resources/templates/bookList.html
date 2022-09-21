@@ -9,6 +9,7 @@
 	<h1>Books</h1>
 	<table class="table table-striped">
 		<tr>
+			<th>Category</th>
 			<th>Title</th>
 			<th>Author</th>
 			<th>Year</th>
@@ -16,9 +17,10 @@
 			<th>Price(€)</th>
 		</tr>
 		<tr th:each="book : ${books}">
+			<td th:text="${book.category.name}"></td>
 			<td th:text="${book.title}"></td>
 			<td th:text="${book.author}"></td>
-			<td th:text="${book.year}"></td>
+			<td th:text="${book.myYear}"></td>
 			<td th:text="${book.isbn}"></td>
 			<td th:text="${book.price}"></td>
 			<td><a th:href="@{/delete/{id}(id=${book.id})}"  class="btn btn-danger">Delete</a></td>
